@@ -82,14 +82,8 @@ function getSummary(callback) {
 
 // 検閲ログを追加する
 function addCensoredLog(username, content, date) {
-    let item = {
-        "username": username,
-        "message": content,
-        "date": date,
-    };
-    dbSummary.run("INSERT OR REPLACE INTO summary VALUES (?,?,?)", [item.username, item.date, item.content], () => {
-        resolve(item);
-    });
+    defaultLogger.info(item);
+    dbSummary.run("INSERT OR REPLACE INTO summary VALUES (?,?,?)", [username.username, date, content]);
 }
 
 
@@ -108,7 +102,7 @@ client.on('message', message => {
         if (isMultibyte(message.content)) {
             // 投稿を削除し、エラーコメントを返信
             let username = message.author;
-            let date = message.createdAt.now;
+            let date = message.createdTimestamp;
             let content = message.content;
             addCensoredLog(username, content, date);
             let deletelog = "The message has been deleted.";
