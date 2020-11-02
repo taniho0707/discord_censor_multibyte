@@ -82,7 +82,7 @@ function getSummary(callback) {
 
 // 検閲ログを追加する
 function addCensoredLog(username, content, date) {
-    defaultLogger.info(item);
+    defaultLogger.info("@" + username.username + " said \"" + content + "\" at " + date);
     dbSummary.run("INSERT OR REPLACE INTO summary VALUES (?,?,?)", [username.username, date, content]);
 }
 
