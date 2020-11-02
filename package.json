@@ -1,0 +1,26 @@
+{
+  "name": "discord_censor_multibyte",
+  "version": "1.0.0",
+  "description": "",
+  "main": "discord_censor_multibyte.js",
+  "dependencies": {
+    "config": "^3.3.2",
+    "discord.js": "^12.4.1",
+    "log4js": "^6.3.0",
+    "sqlite3": "^5.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taniho0707/discord_censor_multibyte.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/taniho0707/discord_censor_multibyte/issues"
+  },
+  "homepage": "https://github.com/taniho0707/discord_censor_multibyte#readme"
+}
