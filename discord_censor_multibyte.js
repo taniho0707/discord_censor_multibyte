@@ -59,7 +59,8 @@ function closeDatabase() {
 
 // Multibyteかどうか判定する
 function isMultibyte(text) {
-    if (text.match(/([^\x00-\x7F])/) === null) {
+    let newtext = text.replace(/[^\p{L}\p{N}\p{P}\p{Z}]/gi, '');
+    if (newtext.match(/([^\x00-\x7F’])/) === null) {
         return false;
     } else {
         return true;
