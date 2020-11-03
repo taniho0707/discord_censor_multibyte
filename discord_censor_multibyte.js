@@ -46,7 +46,7 @@ var fetchingMessages;
 function openOrCreateDatabase() {
     dbSummary = new sqlite3.Database('summary.sqlite');
     dbSummary.serialize(() => {
-        dbSummary.run('CREATE TABLE IF NOT EXISTS summary (username TEXT PRIMARY KEY, date NUMERIC, comment TEXT)');
+        dbSummary.run('CREATE TABLE IF NOT EXISTS summary (date NUMERIC PRIMARY KEY, username TEXT, comment TEXT)');
     });
     defaultLogger.info("Open database");
 }
@@ -83,7 +83,7 @@ function getSummary(callback) {
 // 検閲ログを追加する
 function addCensoredLog(username, content, date) {
     defaultLogger.info("@" + username.username + " said \"" + content + "\" at " + date);
-    dbSummary.run("INSERT OR REPLACE INTO summary VALUES (?,?,?)", [username.username, date, content]);
+    dbSummary.run("INSERT OR REPLACE INTO summary VALUES (?,?,?)", [date, username.username, content]);
 }
 
 
